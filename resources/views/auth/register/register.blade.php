@@ -176,6 +176,16 @@
             <input type="password" class="border-0 w-100 password_confirmation" name="password">
           </div>
         </div>
+        <!-- バリデーション処理のエラー文を表示 -->
+        @if($errors->any())
+          <div class="alert alert-danger mt-3">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
         <div class="mt-5 text-right">
           <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録" onclick="return confirm('登録してよろしいですか？')">
         </div>
