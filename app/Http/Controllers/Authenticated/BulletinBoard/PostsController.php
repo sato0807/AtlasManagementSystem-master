@@ -40,6 +40,8 @@ class PostsController extends Controller
 
     public function postDetail($post_id){
         $post = Post::with('user', 'postComments')->findOrFail($post_id);
+        // with('テーブル') テーブルの情報を取得
+        // findOrFail('カラム名') 指定したカラムの値を取り出す。ただし、見つからない場合、エラー表示
         return view('authenticated.bulletinboard.post_detail', compact('post'));
     }
 
