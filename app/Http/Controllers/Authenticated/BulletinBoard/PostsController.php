@@ -17,8 +17,10 @@ class PostsController extends Controller
 {
     public function show(Request $request){
         $posts = Post::with('user', 'postComments')->get();
+        // リレーションしたusersとpost_commentsテーブルの取得
         $categories = MainCategory::get();
         $like = new Like;
+        // new:classの呼び出し
         $post_comment = new Post;
         if(!empty($request->keyword)){
             $posts = Post::with('user', 'postComments')
