@@ -29,7 +29,7 @@ class Post extends Model
 
     // コメント数
     public function commentCounts($post_id){
-        return Post::with('postComments')->find($post_id)->count();
-        // ->postComments();
+        return Post::with('postComments')->find($post_id)->postComments()->count();
+        // PostモデルのpostComments(postsとpost_commentsテーブル)を取得->post_idを取得->user_idやcommentなどを取得->カウント数
     }
 }
