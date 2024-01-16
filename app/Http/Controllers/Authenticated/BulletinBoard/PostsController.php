@@ -12,6 +12,8 @@ use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\BulletinBoard\PostCommentFormRequest;
+use App\Http\Requests\Categories\MainCategoryFormRequest;
+use App\Http\Requests\Categories\SubCategoryFormRequest;
 use Auth;
 
 class PostsController extends Controller
@@ -76,14 +78,17 @@ class PostsController extends Controller
     }
 
     // メインカテゴリー作成
-    public function mainCategoryCreate(Request $request){
+    public function mainCategoryCreate(MainCategoryFormRequest $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
 
     // サブカテゴリー作成
-    public function subCategoryCreate(Request $request){
-        SubCategory::create(['sub_category' => $request->sub_category_name]);
+    public function subCategoryCreate(SubCategoryFormRequest $request){
+        SubCategory::create([
+            'main_category_id' => $request->main_category_id,
+            'sub_category' => $request->sub_category_name
+        ]);
         return redirect()->route('post.input');
     }
 
