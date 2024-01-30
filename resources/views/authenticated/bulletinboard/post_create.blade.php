@@ -43,7 +43,8 @@
       <!-- サブカテゴリー追加 -->
       <div class="">
         <p class="m-0">サブカテゴリー</p>
-        <select name="main_categories">
+        <select name="main_category_id" form="subCategoryRequest">
+          <!-- 送信したい内容のform=""とフォームタグのid=""は値を同じにする -->
           <option value="">---</option>
           @foreach($main_categories as $main_category)
             <option value="{{ $main_category->id }}">

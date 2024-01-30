@@ -85,6 +85,7 @@ class PostsController extends Controller
 
     // サブカテゴリー作成
     public function subCategoryCreate(SubCategoryFormRequest $request){
+        // dd($request);
         SubCategory::create([
             'main_category_id' => $request->main_category_id,
             'sub_category' => $request->sub_category_name
